@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { UnorderedList, Flex, Button, Spinner, Text } from "@chakra-ui/react";
-import Pokemon from "./Pokemon";
+import { List, Flex, Spinner, Text, VStack } from "@chakra-ui/react";
+import PokemonList from "./PokemonList";
 import axios from "axios";
 const BASE_URL = "https://pokeapi.co/api/v2/pokemon/";
 
@@ -13,7 +13,7 @@ const PokemonFetch = () => {
             await axios
                 .get(BASE_URL)
                 .then((res) => {
-                    console.log(res);
+                    // console.log(res);
                     setPokemonData(res.data.results);
                     setIsLoading(false);
                 })
@@ -41,15 +41,18 @@ const PokemonFetch = () => {
         } else {
             return (
                 <Flex justify="center">
-                    <UnorderedList>
-                        {pokemonData.map((pokemon) => (
-                            <Pokemon
-                                key={pokemon.name}
-                                name={pokemon.name}
-                                url={pokemon.url}
-                            />
-                        ))}
-                    </UnorderedList>
+                    <VStack spacing={3}>
+                        <Text fontSize="4xl">Pokemon</Text>
+                        <List>
+                            {pokemonData.map((pokemon) => (
+                                <PokemonList
+                                    key={pokemon.name}
+                                    name={pokemon.name}
+                                    url={pokemon.url}
+                                />
+                            ))}
+                        </List>
+                    </VStack>
                 </Flex>
             );
         }
