@@ -1,5 +1,5 @@
 import React from "react";
-import { useDisclosure, Box, Image, Flex } from "@chakra-ui/react";
+import { useDisclosure, VStack, Image, Flex, Button } from "@chakra-ui/react";
 import PokeModal from "./PokeModal";
 
 const PokemonList = (props) => {
@@ -9,14 +9,16 @@ const PokemonList = (props) => {
     return (
         <Flex
             _hover={{
-                cursor: "pointer",
                 transform: "scale(0.95)",
                 transition: "all 0.2s",
             }}
             boxShadow="1px 2px 2px rgba(0,0,0,0.35)"
         >
-            <Box alignSelf="center">
-                <Image src={picture} justifyContent="center" />
+            <VStack alignSelf="center" display="flex" mx={5} mb={4}>
+                <Image src={picture} />
+                <Button onClick={onOpen} ml={8} my={4} mb={4}>
+                    {name.toUpperCase()}
+                </Button>
                 <PokeModal
                     isOpen={isOpen}
                     onOpen={onOpen}
@@ -29,7 +31,7 @@ const PokemonList = (props) => {
                     stats={stats}
                     dexNumber={dexNumber}
                 />
-            </Box>
+            </VStack>
         </Flex>
     );
 };

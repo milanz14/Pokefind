@@ -30,9 +30,9 @@ const PokeModal = (props) => {
 
     return (
         <>
-            <Button onClick={onOpen} ml={8} my={4}>
+            {/* <Button onClick={onOpen} ml={8} my={4}>
                 {name.toUpperCase()}
-            </Button>
+            </Button> */}
             <Modal
                 isOpen={isOpen}
                 size={size}
@@ -44,7 +44,7 @@ const PokeModal = (props) => {
                     <ModalHeader>{name.toUpperCase()}</ModalHeader>
                     <ModalCloseButton onClick={onClose} />
                     <ModalBody>
-                        <Image src={picture} boxSize="200px" />
+                        <Image src={picture} />
                         <Text fontSize="4xl">Pokedex: #{dexNumber}</Text>
                         <Text fontSize="2xl">XP: {xp}</Text>
                         <Text fontSize="2xl">Weight: {weight}</Text>

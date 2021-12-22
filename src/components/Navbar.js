@@ -31,6 +31,9 @@ const Navbar = () => {
                 <MenuItem onClick={() => navigate("/pokemon")}>
                     Pokemon Search
                 </MenuItem>
+                <MenuItem onClick={() => navigate("/pokemon/types")}>
+                    Type Search
+                </MenuItem>
                 {loggedIn && (
                     <MenuItem onClick={() => navigate("/logout")}>
                         Logout

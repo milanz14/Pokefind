@@ -66,7 +66,13 @@ const PokemonFetch = () => {
                 <Flex justify="center">
                     <VStack>
                         <Image src={pokemon} />
-                        <Box alignContent="center">
+                        <Box
+                            alignContent="center"
+                            display="flex"
+                            flexWrap="wrap"
+                            flexBasis="21%"
+                            alignItems="center"
+                        >
                             {pokemonData.map((pokemon) => (
                                 <PokemonList
                                     key={pokemon.name}
