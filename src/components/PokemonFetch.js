@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { List, Flex, Spinner, Text, VStack } from "@chakra-ui/react";
+import { Box, Flex, Spinner, Image, VStack, HStack } from "@chakra-ui/react";
 import PokemonList from "./PokemonList";
 import axios from "axios";
-const BASE_URL = "https://pokeapi.co/api/v2/pokemon/";
+import pokemon from "../assets/pokemon.png";
+const BASE_URL = "https://pokeapi.co/api/v2/pokemon/?limit=151";
 
 const PokemonFetch = () => {
     const [pokemonData, setPokemonData] = useState([]);
@@ -10,18 +11,40 @@ const PokemonFetch = () => {
 
     useEffect(() => {
         const fetch = async () => {
-            await axios
+            let data = [];
+            let urls = await axios
                 .get(BASE_URL)
                 .then((res) => {
-                    // console.log(res);
-                    setPokemonData(res.data.results);
-                    setIsLoading(false);
+                    const pokeInfo = res.data.results;
+                    // console.log(pokeInfo[0]);
+                    return pokeInfo.map((result) => {
+                        return result.url;
+                    });
                 })
                 .catch((err) => {
                     if (err.response) {
                         alert("Pokemon not found... are you sure it exists?");
+                        setPokemonData([]);
+                        setIsLoading(false);
                     }
                 });
+
+            for (let url of urls) {
+                await axios
+                    .get(url)
+                    .then((res) => {
+                        // console.log(res.data[0]);
+                        data.push(res.data);
+                        console.log(res.data);
+                    })
+                    .catch((err) => {
+                        if (err) {
+                            alert(err.response);
+                        }
+                    });
+            }
+            setPokemonData(data);
+            setIsLoading(false);
         };
         fetch();
     }, []);
@@ -41,17 +64,22 @@ const PokemonFetch = () => {
         } else {
             return (
                 <Flex justify="center">
-                    <VStack spacing={3}>
-                        <Text fontSize="4xl">Pokemon</Text>
-                        <List>
+                    <VStack>
+                        <Image src={pokemon} />
+                        <Box alignContent="center">
                             {pokemonData.map((pokemon) => (
                                 <PokemonList
                                     key={pokemon.name}
                                     name={pokemon.name}
-                                    url={pokemon.url}
+                                    weight={pokemon.weight}
+                                    xp={pokemon.base_experience}
+                                    dexNumber={pokemon.id}
+                                    moves={pokemon.moves}
+                                    picture={pokemon.sprites.front_default}
+                                    stats={pokemon.stats}
                                 />
                             ))}
-                        </List>
+                        </Box>
                     </VStack>
                 </Flex>
             );

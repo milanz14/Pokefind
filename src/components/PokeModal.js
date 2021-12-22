@@ -1,39 +1,64 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React from "react";
+import {
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter,
+    ModalCloseButton,
+    ModalBody,
+    Button,
+    Text,
+    Image,
+} from "@chakra-ui/react";
+// import PokeMoves from "./PokeMoves";
 
 const PokeModal = (props) => {
-    const { pokemonID, url, name } = props;
-    const [pokeData, setPokeData] = useState({});
-
-    useEffect(() => {
-        const fetch = async () => {
-            await axios
-                .get(url)
-                .then((res) => {
-                    console.log(res.data);
-                    setPokeData(res.data);
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        };
-        fetch();
-    }, []);
-
-    const logPokeData = () => {
-        console.log(pokeData);
-        console.log(pokeData.sprites.front_default);
-        console.log(url);
-    };
+    const {
+        isOpen,
+        onOpen,
+        onClose,
+        name,
+        weight,
+        xp,
+        moves,
+        picture,
+        stats,
+        dexNumber,
+    } = props;
+    const size = "lg";
 
     return (
-        <div>
-            <h1>{name}</h1>
-            <h2>{pokemonID}</h2>
-            <h2>{url}</h2>
-            <button onClick={logPokeData}>Click Me</button>
-            {/* <img src={pokeData.sprites.front_default || null} /> */}
-        </div>
+        <>
+            <Button onClick={onOpen} ml={8} my={4}>
+                {name.toUpperCase()}
+            </Button>
+            <Modal
+                isOpen={isOpen}
+                size={size}
+                isCentered
+                motionPreset="slideInRight"
+            >
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalHeader>{name.toUpperCase()}</ModalHeader>
+                    <ModalCloseButton onClick={onClose} />
+                    <ModalBody>
+                        <Image src={picture} boxSize="200px" />
+                        <Text fontSize="4xl">Pokedex: #{dexNumber}</Text>
+                        <Text fontSize="2xl">XP: {xp}</Text>
+                        <Text fontSize="2xl">Weight: {weight}</Text>
+                        {/* <PokeMoves moves={moves} /> */}
+                    </ModalBody>
+
+                    <ModalFooter>
+                        <Button colorScheme="blue" mr={3} onClick={onClose}>
+                            Close
+                        </Button>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
+        </>
     );
 };
 
