@@ -29,18 +29,7 @@ const Navbar = () => {
             <MenuList>
                 <MenuItem onClick={() => navigate("/")}>Home</MenuItem>
                 <MenuItem onClick={() => navigate("/pokemon")}>
-                    Pokemon
-                </MenuItem>
-                <MenuItem onClick={() => navigate("/items")}>Items</MenuItem>
-                <MenuItem onClick={() => navigate("/berries")}>
-                    Berries
-                </MenuItem>
-                <MenuItem onClick={() => navigate("/evolution")}>
-                    Evolution
-                </MenuItem>
-                <MenuItem onClick={() => navigate("/moves")}>Moves</MenuItem>
-                <MenuItem onClick={() => navigate("/machines")}>
-                    Machines
+                    Pokemon Search
                 </MenuItem>
                 {loggedIn && (
                     <MenuItem onClick={() => navigate("/logout")}>

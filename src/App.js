@@ -7,7 +7,7 @@ import Register from "./components/Register";
 import { LoginContext } from "./helpers/LoginContext";
 
 function App() {
-    const [loggedIn, setLoggedIn] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(true);
 
     return (
         <LoginContext.Provider value={{ loggedIn, setLoggedIn }}>
