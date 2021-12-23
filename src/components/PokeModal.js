@@ -10,6 +10,7 @@ import {
     Button,
     Text,
     Image,
+    Box,
 } from "@chakra-ui/react";
 // import PokeMoves from "./PokeMoves";
 
@@ -25,6 +26,7 @@ const PokeModal = (props) => {
         picture,
         stats,
         dexNumber,
+        primaryType,
     } = props;
     const size = "lg";
 
@@ -44,10 +46,17 @@ const PokeModal = (props) => {
                     <ModalHeader>{name.toUpperCase()}</ModalHeader>
                     <ModalCloseButton onClick={onClose} />
                     <ModalBody>
-                        <Image src={picture} />
+                        <Box boxSize="200px">
+                            <Image src={picture} />
+                        </Box>
                         <Text fontSize="4xl">Pokedex: #{dexNumber}</Text>
                         <Text fontSize="2xl">XP: {xp}</Text>
                         <Text fontSize="2xl">Weight: {weight}</Text>
+                        <Text fontSize="2xl">
+                            Type:{" "}
+                            {primaryType[0].toUpperCase() +
+                                primaryType.substring(1)}
+                        </Text>
                         {/* <PokeMoves moves={moves} /> */}
                     </ModalBody>
 
