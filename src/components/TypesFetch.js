@@ -71,9 +71,11 @@ const TypesFetch = () => {
             <VStack>
                 <Image src={types}></Image>
                 {hasData && (
-                    <Text fontSize="4xl" mx={2}>
-                        Currently showing: {pokemonType.toUpperCase()}-type
-                        Pokemon
+                    <Text fontSize="2xl" mx={2}>
+                        <em>
+                            Currently showing: {pokemonType.toUpperCase()}-type
+                            Pokemon
+                        </em>
                     </Text>
                 )}
                 {isLoading && (
@@ -82,8 +84,8 @@ const TypesFetch = () => {
                             <VStack>
                                 <Spinner
                                     size="xl"
-                                    color="yellow.500"
-                                    emptyColor="red.500"
+                                    color="yellow.400"
+                                    emptyColor="blue.500"
                                     thickness="8px"
                                 />
                             </VStack>

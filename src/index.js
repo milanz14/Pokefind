@@ -6,7 +6,7 @@ import "@fontsource/raleway/400.css";
 
 const theme = extendTheme({
     fonts: {
-        heading: "Raleway",
+        html: "Raleway",
         body: "Raleway",
     },
 });

@@ -25,13 +25,20 @@ const PokeModal = (props) => {
         dexNumber,
         primaryType,
     } = props;
+    // const [pokemonMoves, setPokemonMoves] = useState([]);
+    // const [movesClick, setMovesClicked] = useState(false);
     const size = "lg";
+
+    // const getPokemonsMoves = (array) => {
+    //     for (let move of moves) {
+    //         setPokemonMoves((currMoves) => [...currMoves, move]);
+    //         console.log(move);
+    //     }
+    //     setMovesClicked(true);
+    // };
 
     return (
         <>
-            {/* <Button onClick={onOpen} ml={8} my={4}>
-                {name.toUpperCase()}
-            </Button> */}
             <Modal
                 isOpen={isOpen}
                 size={size}
@@ -56,7 +63,18 @@ const PokeModal = (props) => {
                             {primaryType[0].toUpperCase() +
                                 primaryType.substring(1)}
                         </Text>
-                        {/* <PokeMoves moves={moves} /> */}
+                        {/* <Button onClick={() => getPokemonsMoves(moves)}>
+                            Show Moves
+                        </Button> */}
+                        {/* {movesClick && (
+                            <>
+                                <ul>
+                                    {pokemonMoves.map((pokeMove) => {
+                                        <li>{pokeMove.name}</li>;
+                                    })}
+                                </ul>
+                            </>
+                        )} */}
                     </ModalBody>
 
                     <ModalFooter>

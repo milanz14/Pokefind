@@ -29,7 +29,6 @@ const PokemonFetch = () => {
             let urls = await axios
                 .get(baseURL)
                 .then((res) => {
-                    console.log(res.data.next);
                     setNext(res.data.next);
                     const pokeInfo = res.data.results;
                     return pokeInfo.map((result) => {
@@ -78,8 +77,8 @@ const PokemonFetch = () => {
                         <Image src={pokemon} mb={5} />
                         <Spinner
                             size="xl"
-                            color="yellow.500"
-                            emptyColor="red.500"
+                            color="yellow.400"
+                            emptyColor="blue.500"
                             thickness="8px"
                         />
                     </VStack>
@@ -87,7 +86,7 @@ const PokemonFetch = () => {
             );
         } else {
             return (
-                <VStack>
+                <VStack p={5}>
                     <Image src={pokemon} mb={5} />
                     <Stack
                         direction={isNotSmallScreen ? "row" : "column"}
@@ -122,8 +121,8 @@ const PokemonFetch = () => {
                         {fetchingMore && (
                             <Spinner
                                 size="xl"
-                                color="yellow.500"
-                                emptyColor="red.500"
+                                color="yellow.400"
+                                emptyColor="blue.500"
                                 thickness="8px"
                             />
                         )}

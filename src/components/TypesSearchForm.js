@@ -16,7 +16,13 @@ const TypesSearchForm = (props) => {
             p={5}
         >
             <FormLabel htmlFor="types">Select Pokemon Type</FormLabel>
-            <Select id="types" onChange={handleChange} size="lg">
+            <Select
+                id="types"
+                onChange={handleChange}
+                size="lg"
+                variant="Flushed"
+                fontFamily="Raleway"
+            >
                 <option value="normal">Normal</option>
                 <option value="fire">Fire</option>
                 <option value="water">Water</option>
