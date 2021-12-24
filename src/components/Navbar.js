@@ -39,7 +39,12 @@ const Navbar = () => {
                     Type Search
                 </MenuItem>
                 {loggedIn && (
-                    <MenuItem onClick={handleLogoutClick}>Logout</MenuItem>
+                    <>
+                        <MenuItem onClick={() => navigate("/pokemon/pokedex")}>
+                            My Pokedex
+                        </MenuItem>
+                        <MenuItem onClick={handleLogoutClick}>Logout</MenuItem>
+                    </>
                 )}
                 {!loggedIn && (
                     <>
