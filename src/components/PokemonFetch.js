@@ -1,14 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { Box, Flex, Spinner, Image, VStack, Text } from "@chakra-ui/react";
+import {
+    Flex,
+    Spinner,
+    Image,
+    VStack,
+    Stack,
+    useMediaQuery,
+} from "@chakra-ui/react";
 import PokemonList from "./PokemonList";
 import axios from "axios";
 import pokemon from "../assets/pokemon.png";
-import FilterForm from "./FilterForm";
-const BASE_URL = "https://pokeapi.co/api/v2/pokemon?limit=100";
+const BASE_URL = "https://pokeapi.co/api/v2/pokemon?limit=500";
 
 const PokemonFetch = () => {
     const [pokemonData, setPokemonData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [isNotSmallScreen] = useMediaQuery("(min-width:800px)");
+    const secondary = "";
 
     useEffect(() => {
         const fetch = async () => {
@@ -57,21 +65,26 @@ const PokemonFetch = () => {
             return (
                 <Flex justify="center" alignContent="column">
                     <VStack>
+                        <Image src={pokemon} mb={5} />
                         <Spinner
                             size="xl"
                             color="yellow.500"
                             emptyColor="red.500"
                             thickness="8px"
                         />
-                        <Text fontSize="4xl">LOADING... </Text>
                     </VStack>
                 </Flex>
             );
         } else {
             return (
                 <VStack>
-                    <Image src={pokemon} mb={14} />
-                    <Box>
+                    <Image src={pokemon} mb={5} />
+                    <Stack
+                        direction={isNotSmallScreen ? "row" : "column"}
+                        maxWidth="100vw"
+                        wrap="wrap"
+                        justifyContent="center"
+                    >
                         {pokemonData.map((pokemon) => (
                             <PokemonList
                                 key={pokemon.name}
@@ -88,7 +101,7 @@ const PokemonFetch = () => {
                                 primaryType={pokemon.types[0].type.name}
                             />
                         ))}
-                    </Box>
+                    </Stack>
                 </VStack>
             );
         }

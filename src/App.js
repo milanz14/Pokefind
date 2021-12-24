@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import PokemonFetch from "./components/PokemonFetch";
 import TypesFetch from "./components/TypesFetch";
 import Register from "./components/Register";
+import Login from "./components/Login";
 import { LoginContext } from "./helpers/LoginContext";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
                     <Route path="/pokemon" element={<PokemonFetch />} />
                     <Route path="/pokemon/types" element={<TypesFetch />} />
                     <Route path="/register" element={<Register />} />
+                    <Route path="/login" element={<Login />} />
                 </Routes>
             </BrowserRouter>
         </LoginContext.Provider>
