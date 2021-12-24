@@ -13,7 +13,11 @@ const Navbar = () => {
         if (isLoggedIn) {
             setLoggedIn(true);
         }
-    }, [loggedIn]);
+    });
+
+    const handleLogoutClick = () => {
+        setLoggedIn(false);
+    };
 
     return (
         <Menu>
@@ -35,9 +39,7 @@ const Navbar = () => {
                     Type Search
                 </MenuItem>
                 {loggedIn && (
-                    <MenuItem onClick={() => navigate("/logout")}>
-                        Logout
-                    </MenuItem>
+                    <MenuItem onClick={handleLogoutClick}>Logout</MenuItem>
                 )}
                 {!loggedIn && (
                     <>

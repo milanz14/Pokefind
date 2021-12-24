@@ -5,7 +5,7 @@ import {
     Image,
     Flex,
     Button,
-    HStack,
+    VStack,
 } from "@chakra-ui/react";
 import PokeModal from "./PokeModal";
 
@@ -29,9 +29,9 @@ const PokemonList = (props) => {
                 display="flex"
                 alignItems="center"
             >
-                <HStack alignSelf="center" display="flex" mb={4}>
-                    <Image src={picture} boxSize="200px" mx={8} />
-                    <Button onClick={onOpen} ml={8} my={4} mb={4}>
+                <VStack justify="center" display="flex" mb={4} mx={20}>
+                    <Image src={picture} boxSize="200px" mx={8} mb={2} />
+                    <Button onClick={onOpen} ml={8} my={4} mb={2}>
                         {name.toUpperCase()}
                     </Button>
                     {/* <Link href={`pokemon/${name}`}>More Info</Link> */}
@@ -48,7 +48,7 @@ const PokemonList = (props) => {
                         dexNumber={dexNumber}
                         primaryType={primaryType}
                     />
-                </HStack>
+                </VStack>
             </Box>
         </Flex>
     );

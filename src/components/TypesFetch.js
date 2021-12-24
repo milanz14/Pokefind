@@ -16,23 +16,22 @@ import types from "../assets/types.png";
 const BASE_TYPES_URL = "https://pokeapi.co/api/v2/type";
 
 const TypesFetch = () => {
-    const [pokemonType, setPokemonType] = useState("");
+    const [pokemonType, setPokemonType] = useState("normal");
     const [filteredByTypeData, setFilteredByTypeData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [hasData, setHasData] = useState(true);
     const [isNotSmallScreen] = useMediaQuery("(min-width:800px)");
 
     useEffect(() => {
         const fetch = async () => {
             let data = [];
             setIsLoading(true);
+            setHasData(false);
             let urls = await axios
                 .get(`${BASE_TYPES_URL}/${pokemonType}`)
                 .then((res) => {
                     const moreUrls = res.data.pokemon;
-                    // console.log(moreUrls);
-                    // console.log(urls.data.pokemon);
                     return moreUrls.map((result) => {
-                        // console.log(result.url);
                         return result.pokemon.url;
                     });
                 })
@@ -48,7 +47,6 @@ const TypesFetch = () => {
                 await axios
                     .get(url)
                     .then((res) => {
-                        // console.log(res.data);
                         data.push(res.data);
                     })
                     .catch((err) => {
@@ -59,6 +57,7 @@ const TypesFetch = () => {
             }
             setFilteredByTypeData(data);
             setIsLoading(false);
+            setHasData(true);
         };
         fetch();
     }, [pokemonType]);
@@ -71,17 +70,21 @@ const TypesFetch = () => {
         <Box>
             <VStack>
                 <Image src={types}></Image>
-                <Text fontSize="4xl">Find Pokemon by Type.. </Text>
+                <Text fontSize="4xl">
+                    Currently showing: {pokemonType.toUpperCase()}-type Pokemon
+                </Text>
                 {isLoading && (
                     <Flex justify="center" alignContent="column">
-                        <VStack>
-                            <Spinner
-                                size="xl"
-                                color="yellow.500"
-                                emptyColor="red.500"
-                                thickness="8px"
-                            />
-                        </VStack>
+                        {!hasData && (
+                            <VStack>
+                                <Spinner
+                                    size="xl"
+                                    color="yellow.500"
+                                    emptyColor="red.500"
+                                    thickness="8px"
+                                />
+                            </VStack>
+                        )}
                     </Flex>
                 )}
                 <TypeSearchForm getTypeData={getTypeData} />
