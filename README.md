@@ -1,4 +1,4 @@
-# PokeFind
+# PokeFind (Work In Progress)
 
 Find information on all of your favorite Pokemon.
 
