@@ -5,18 +5,21 @@ import {
     Image,
     VStack,
     Stack,
+    Button,
     useMediaQuery,
 } from "@chakra-ui/react";
 import PokemonList from "./PokemonList";
 import axios from "axios";
 import pokemon from "../assets/pokemon.png";
-const BASE_URL = "https://pokeapi.co/api/v2/pokemon?limit=500";
+const BASE_URL = "https://pokeapi.co/api/v2/pokemon?limit=30";
 
 const PokemonFetch = () => {
     const [pokemonData, setPokemonData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [isNotSmallScreen] = useMediaQuery("(min-width:800px)");
-    const secondary = "";
+    const [next, setNext] = useState(
+        "https://pokeapi.co/api/v2/pokemon?offset=20&limit=10"
+    );
 
     useEffect(() => {
         const fetch = async () => {
@@ -24,8 +27,8 @@ const PokemonFetch = () => {
             let urls = await axios
                 .get(BASE_URL)
                 .then((res) => {
+                    console.log(res.data.next);
                     const pokeInfo = res.data.results;
-                    // const nextItemsLink = res.data.next;
                     return pokeInfo.map((result) => {
                         return result.url;
                     });
@@ -42,9 +45,7 @@ const PokemonFetch = () => {
                 await axios
                     .get(url)
                     .then((res) => {
-                        // console.log(res.data[0]);
                         data.push(res.data);
-                        // console.log(res.data);
                     })
                     .catch((err) => {
                         if (err) {
@@ -52,13 +53,16 @@ const PokemonFetch = () => {
                         }
                     });
             }
-            // localStorage.setItem("results", JSON.stringify(data));
             setPokemonData(data);
             setIsLoading(false);
-            // console.log(data);
         };
         fetch();
     }, []);
+
+    const handleLoadMore = () => {
+        setIsLoading(true);
+        console.log(next);
+    };
 
     const isThereData = () => {
         if (isLoading) {
@@ -102,6 +106,22 @@ const PokemonFetch = () => {
                             />
                         ))}
                     </Stack>
+                    <Button
+                        onClick={handleLoadMore}
+                        mt={5}
+                        mb={5}
+                        colorScheme="yellow"
+                    >
+                        Load More...
+                        {isLoading && (
+                            <Spinner
+                                size="xl"
+                                color="yellow.500"
+                                emptyColor="red.500"
+                                thickness="8px"
+                            />
+                        )}
+                    </Button>
                 </VStack>
             );
         }

@@ -12,12 +12,7 @@ const TypesSearchForm = (props) => {
     return (
         <FormControl width="400px">
             <FormLabel htmlFor="types">Select Pokemon Type</FormLabel>
-            <Select
-                id="types"
-                onChange={handleChange}
-                defaultValue="normal"
-                size="lg"
-            >
+            <Select id="types" onChange={handleChange} size="lg">
                 <option value="normal">Normal</option>
                 <option value="fire">Fire</option>
                 <option value="water">Water</option>
