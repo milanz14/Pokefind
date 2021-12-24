@@ -11,23 +11,26 @@ import {
 import PokemonList from "./PokemonList";
 import axios from "axios";
 import pokemon from "../assets/pokemon.png";
-const BASE_URL = "https://pokeapi.co/api/v2/pokemon?limit=30";
+// const BASE_URL = "https://pokeapi.co/api/v2/pokemon?limit=30";
 
 const PokemonFetch = () => {
     const [pokemonData, setPokemonData] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [fetchingMore, setFetchingMore] = useState(false);
     const [isNotSmallScreen] = useMediaQuery("(min-width:800px)");
-    const [next, setNext] = useState(
-        "https://pokeapi.co/api/v2/pokemon?offset=20&limit=10"
+    const [baseURL, setBaseURL] = useState(
+        "https://pokeapi.co/api/v2/pokemon?limit=8"
     );
+    const [next, setNext] = useState("");
 
     useEffect(() => {
         const fetch = async () => {
             let data = [];
             let urls = await axios
-                .get(BASE_URL)
+                .get(baseURL)
                 .then((res) => {
                     console.log(res.data.next);
+                    setNext(res.data.next);
                     const pokeInfo = res.data.results;
                     return pokeInfo.map((result) => {
                         return result.url;
@@ -53,15 +56,18 @@ const PokemonFetch = () => {
                         }
                     });
             }
-            setPokemonData(data);
+            setPokemonData((currData) => [...currData, ...data]);
             setIsLoading(false);
         };
         fetch();
-    }, []);
+    }, [baseURL]);
 
     const handleLoadMore = () => {
-        setIsLoading(true);
-        console.log(next);
+        setFetchingMore(true);
+        setBaseURL(next);
+        if (!isLoading) {
+            setFetchingMore(false);
+        }
     };
 
     const isThereData = () => {
@@ -113,7 +119,7 @@ const PokemonFetch = () => {
                         colorScheme="yellow"
                     >
                         Load More...
-                        {isLoading && (
+                        {fetchingMore && (
                             <Spinner
                                 size="xl"
                                 color="yellow.500"

@@ -70,9 +70,12 @@ const TypesFetch = () => {
         <Box>
             <VStack>
                 <Image src={types}></Image>
-                <Text fontSize="4xl">
-                    Currently showing: {pokemonType.toUpperCase()}-type Pokemon
-                </Text>
+                {hasData && (
+                    <Text fontSize="4xl" mx={2}>
+                        Currently showing: {pokemonType.toUpperCase()}-type
+                        Pokemon
+                    </Text>
+                )}
                 {isLoading && (
                     <Flex justify="center" alignContent="column">
                         {!hasData && (

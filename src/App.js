@@ -7,17 +7,9 @@ import TypesFetch from "./components/TypesFetch";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import { LoginContext } from "./helpers/LoginContext";
-import { extendTheme } from "@chakra-ui/react";
 
 function App() {
     const [loggedIn, setLoggedIn] = useState(true);
-
-    const theme = extendTheme({
-        fonts: {
-            heading: "Raleway",
-            body: "Raleway",
-        },
-    });
 
     return (
         <LoginContext.Provider value={{ loggedIn, setLoggedIn }}>
