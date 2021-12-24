@@ -17,14 +17,11 @@ import {
 const PokeModal = (props) => {
     const {
         isOpen,
-        onOpen,
         onClose,
         name,
         weight,
         xp,
-        moves,
         picture,
-        stats,
         dexNumber,
         primaryType,
     } = props;
@@ -46,14 +43,16 @@ const PokeModal = (props) => {
                     <ModalHeader>{name.toUpperCase()}</ModalHeader>
                     <ModalCloseButton onClick={onClose} />
                     <ModalBody>
-                        <Box boxSize="200px">
+                        <Box boxSize="150px" pt={10}>
                             <Image src={picture} />
                         </Box>
-                        <Text fontSize="4xl">Pokedex: #{dexNumber}</Text>
+                        <Text fontSize="4xl" mt="150px">
+                            Pokedex: #{dexNumber}
+                        </Text>
                         <Text fontSize="2xl">XP: {xp}</Text>
                         <Text fontSize="2xl">Weight: {weight}</Text>
                         <Text fontSize="2xl">
-                            Type:{" "}
+                            Primary Type:{" "}
                             {primaryType[0].toUpperCase() +
                                 primaryType.substring(1)}
                         </Text>

@@ -17,10 +17,11 @@ const PokemonList = (props) => {
     return (
         <Flex
             _hover={{
-                transform: "scale(0.95)",
+                transform: "scale(0.98)",
                 transition: "all 0.2s",
             }}
             boxShadow="rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px"
+            borderRadius="16px"
         >
             <Box
                 width="400px"
