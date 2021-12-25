@@ -1,12 +1,5 @@
 import React from "react";
-import {
-    Text,
-    Box,
-    Image,
-    Flex,
-    useMediaQuery,
-    Heading,
-} from "@chakra-ui/react";
+import { Text, Box, Image, useMediaQuery, Heading } from "@chakra-ui/react";
 import bulbasaur from "../assets/bulbasaur.png";
 
 const Section = () => {
