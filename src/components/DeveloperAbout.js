@@ -21,7 +21,7 @@ const DeveloperAbout = () => {
             <Heading align="center">THE DEV</Heading>
             <Box justifyItems="center">
                 <Text fontSize={isNotSmallScreen ? "2xl" : "lg"} align="center">
-                    Milan is a full stack web developer with over a decade of
+                    The dev is a full stack web developer with over a decade of
                     experience in sales leadership.
                 </Text>
             </Box>
