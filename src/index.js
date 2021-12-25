@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import "@fontsource/raleway/400.css";
+import "./styles/Index.css";
 
 const theme = extendTheme({
     fonts: {

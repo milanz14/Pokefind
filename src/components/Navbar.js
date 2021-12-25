@@ -1,6 +1,12 @@
 import React, { useContext, useEffect } from "react";
-import { Menu, MenuButton, MenuList, MenuItem, Button } from "@chakra-ui/react";
-import { TriangleDownIcon } from "@chakra-ui/icons";
+import {
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
+    IconButton,
+} from "@chakra-ui/react";
+import { HamburgerIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 import { LoginContext } from "../helpers/LoginContext";
 
@@ -20,16 +26,14 @@ const Navbar = () => {
     };
 
     return (
-        <Menu>
+        <Menu isLazy>
             <MenuButton
-                as={Button}
-                rightIcon={<TriangleDownIcon />}
-                my={4}
+                as={IconButton}
+                icon={<HamburgerIcon />}
+                my={2}
                 mx={2}
                 transition="all 0.5s"
-            >
-                Navigate
-            </MenuButton>
+            ></MenuButton>
             <MenuList>
                 <MenuItem onClick={() => navigate("/")}>Home</MenuItem>
                 <MenuItem onClick={() => navigate("/pokemon")}>
