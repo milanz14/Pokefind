@@ -1,11 +1,13 @@
 import React from "react";
+import SocialMediaLinks from "./SocialMediaLinks";
+import "../styles/Footer.css";
 
-const Footer = () => {
-    return (
-        <div>
-            <h1>Placeholder Footer</h1>
+export const Footer = () => (
+    <div className="footer">
+        <div className="footer-text">
+            <SocialMediaLinks />
         </div>
-    );
-};
+    </div>
+);
 
 export default Footer;

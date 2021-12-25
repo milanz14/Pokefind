@@ -1,10 +1,12 @@
 import React from "react";
+import title from "../assets/titletext_alternate.png";
+import { Image, Box } from "@chakra-ui/react";
 
 const Header = () => {
     return (
-        <div>
-            <h1>Placeholder header</h1>
-        </div>
+        <Box>
+            <Image src={title} mb={18}></Image>
+        </Box>
     );
 };
 
