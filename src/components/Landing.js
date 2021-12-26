@@ -22,6 +22,7 @@ const Landing = () => {
             </Button>
             <Section />
             <Spacer></Spacer>
+            <DeveloperAbout />
             <Footer />
         </VStack>
     );
