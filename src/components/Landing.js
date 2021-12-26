@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 
 import Header from "./Header";
 import Section from "./Section";
-import DeveloperAbout from "./DeveloperAbout";
 
 const Landing = () => {
     const navigate = useNavigate();
@@ -21,7 +20,6 @@ const Landing = () => {
             </Button>
             <Section />
             <Spacer></Spacer>
-            <DeveloperAbout />
         </VStack>
     );
 };

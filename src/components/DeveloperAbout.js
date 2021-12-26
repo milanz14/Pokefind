@@ -6,6 +6,7 @@ import {
     Text,
     Image,
     Heading,
+    Flex,
     useMediaQuery,
 } from "@chakra-ui/react";
 import profile from "../assets/profile.JPG";
@@ -15,8 +16,8 @@ const DeveloperAbout = () => {
 
     return (
         <Box
-            boxSize={isNotSmallScreen ? "500px" : "250px"}
-            py={isNotSmallScreen ? 16 : 250}
+            boxSize={isNotSmallScreen ? "500px" : "200px"}
+            py={isNotSmallScreen ? 16 : 300}
         >
             <Heading align="center">THE DEV</Heading>
             <Box justifyItems="center">
