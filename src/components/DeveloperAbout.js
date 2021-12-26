@@ -25,14 +25,7 @@ const DeveloperAbout = () => {
                     experience in sales leadership.
                 </Text>
             </Box>
-            <VStack mt={6}>
-                <Image
-                    src={profile}
-                    objectFit="cover"
-                    boxSize="100px"
-                    borderRadius="full"
-                    mb={6}
-                />
+            <VStack py={isNotSmallScreen ? 16 : 150}>
                 <Button
                     align="center"
                     onClick={() => window.open("https://github.com/milanz14")}
