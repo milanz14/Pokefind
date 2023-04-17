@@ -22,7 +22,7 @@ const PokemonList = (props) => {
       }}
       boxShadow="rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px"
       borderRadius="16px">
-      <Box width="400px" height="300px" display="flex" alignItems="center">
+      <Box width="400px" height="300px" display="flex" align="center">
         <VStack justify="center" display="flex" mb={4} mx={20}>
           <Image src={picture} boxSize="200px" mx={8} mb={2} />
           <Button
