@@ -14,8 +14,6 @@ const PokemonList = (props) => {
     props;
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  console.log(props);
-
   return (
     <Flex
       _hover={{
