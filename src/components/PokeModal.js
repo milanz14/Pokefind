@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -29,8 +29,10 @@ const PokeModal = (props) => {
   } = props;
   const size = "lg";
 
+  const [pokemonStats, setPokemonStats] = useState(null);
+
   useEffect(() => {
-    formatStats();
+    formatStats(stats);
   }, []);
 
   const formatStats = (stats) => {
