@@ -14,11 +14,11 @@ const Section = () => {
         Pokedex!
       </Text>
       <Image alignSelf="center" src={bulbasaur} />
-      <Text fontSize={isNotSmallScreen ? "2xl" : "lg"} align="center" py={5}>
+      {/* <Text fontSize={isNotSmallScreen ? "2xl" : "lg"} align="center" py={5}>
         How it works: On page load, data will load from the PokeApi and display
         cards on the page. It will load limited data to stay performant. The
         user can load more data via a button click.
-      </Text>
+      </Text> */}
     </Box>
   );
 };
