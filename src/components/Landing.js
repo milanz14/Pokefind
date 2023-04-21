@@ -14,12 +14,12 @@ const Landing = () => {
   return (
     <VStack>
       <Header />
-      <Spacer></Spacer>
+      <Spacer />
       <Button onClick={handleClick} colorScheme="yellow">
         Enter
       </Button>
       <Section />
-      <Spacer></Spacer>
+      <Spacer />
     </VStack>
   );
 };

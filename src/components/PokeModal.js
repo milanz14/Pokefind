@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -11,6 +11,7 @@ import {
   Image,
   Box,
   VStack,
+  HStack,
 } from "@chakra-ui/react";
 // import PokeMoves from "./PokeMoves";
 
@@ -28,6 +29,14 @@ const PokeModal = (props) => {
   } = props;
   const size = "lg";
 
+  useEffect(() => {
+    formatStats();
+  }, []);
+
+  const formatStats = (stats) => {
+    console.log(stats);
+  };
+
   return (
     <>
       <Modal isOpen={isOpen} size={size} isCentered motionPreset="slideInRight">
@@ -38,17 +47,22 @@ const PokeModal = (props) => {
             <Box boxSize="150px" pt={10}>
               <Image src={picture} />
             </Box>
-            <VStack align="start">
-              <Text fontSize="4xl" mt="150px">
-                Pokedex: #{dexNumber}
-              </Text>
-              <Text fontSize="2xl">XP: {xp}</Text>
-              <Text fontSize="2xl">Weight: {weight}</Text>
-              <Text fontSize="2xl">
-                Primary Type:{" "}
-                {primaryType[0].toUpperCase() + primaryType.substring(1)}
-              </Text>
-            </VStack>
+            <HStack>
+              <VStack align="start">
+                <Text fontSize="4xl" mt="150px">
+                  Pokedex: #{dexNumber}
+                </Text>
+                <Text fontSize="2xl">XP: {xp}</Text>
+                <Text fontSize="2xl">Weight: {weight}</Text>
+                <Text fontSize="2xl">
+                  Primary Type:{" "}
+                  {primaryType[0].toUpperCase() + primaryType.substring(1)}
+                </Text>
+              </VStack>
+              <VStack>
+                <Text fontSize="2xl">Test</Text>
+              </VStack>
+            </HStack>
           </ModalBody>
 
           <ModalFooter>
