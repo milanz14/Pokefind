@@ -33,7 +33,7 @@ const PokeModal = (props) => {
 
   useEffect(() => {
     formatStats(stats);
-  }, []);
+  }, [isOpen]);
 
   const formatStats = (stats) => {
     console.log(stats);
