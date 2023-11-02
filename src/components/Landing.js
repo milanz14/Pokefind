@@ -6,22 +6,22 @@ import Header from "./Header";
 import Section from "./Section";
 
 const Landing = () => {
-    const navigate = useNavigate();
-    const handleClick = () => {
-        navigate("/pokemon");
-    };
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/pokemon");
+  };
 
-    return (
-        <VStack>
-            <Header />
-            <Spacer></Spacer>
-            <Button onClick={handleClick} colorScheme="yellow">
-                Enter
-            </Button>
-            <Section />
-            <Spacer></Spacer>
-        </VStack>
-    );
+  return (
+    <VStack>
+      <Header />
+      <Spacer />
+      <Button onClick={handleClick} colorScheme="yellow">
+        Enter
+      </Button>
+      <Section />
+      <Spacer />
+    </VStack>
+  );
 };
 
 export default Landing;
